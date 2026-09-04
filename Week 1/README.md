@@ -1,2 +1,2 @@
-# NETWORKWALKS-B083D-PROJECTS-SK
-This is my master repository consisting of all the ongoing NetworkWalks projects
+#Week 1 Report
+This is the sub folder for Week 1 activity
