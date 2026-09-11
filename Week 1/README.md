@@ -6,14 +6,14 @@ Building an isolated virtual environment for cybersecurity, penetration-testing,
 
 ## 📌 Project Overview
 
-This project focuses on building a controlled cybersecurity laboratory using **Oracle VirtualBox** and multiple operating systems.
+This project focuses on building a controlled cybersecurity home lab using **Oracle VirtualBox** and multiple operating systems.
 
 The lab consists of a dedicated virtual network containing:
 
-* 🐉 Kali Linux — Security testing / attacker VM
-* 🪟 Windows 11 — Target / testing VM
-* 🪟 Windows 10 — Target / testing VM
-* 🪟 Windows 7 — Legacy target / testing VM
+* 🐉 Kali Linux — used primarily for Security testing and acts as an attacker VM
+* 🪟 Windows 11 — Victim Target VM used for testing
+* 🪟 Windows 10 — Victim Target VM used for testing
+* 🪟 Windows 7 — Legacy Victim Target VM used for testing
 * 🤖 Android — Mobile security testing VM
 
 The purpose of the environment is to provide a controlled and repeatable platform for learning:
@@ -45,6 +45,7 @@ The main objectives of this project are to:
 * Configure Kali Linux as the primary security-testing machine.
 * Configure Windows 11 as a modern Windows target.
 * Configure Windows 10 as an additional Windows target.
+* Configure Windows Server 2016 as a server target.
 * Configure Windows 7 as a legacy operating-system target.
 * Configure Android as a mobile-security testing target.
 * Verify communication between the virtual machines.
@@ -90,23 +91,18 @@ The planned architecture consists of one host computer running multiple virtual 
               NAT Network           Host System
              10.0.0.0/24
                     │
-       ┌────────────┼────────────┬────────────┐
-       │            │            │            │
-       ▼            ▼            ▼            ▼
-   Kali Linux   Windows 11   Windows 10   Windows 7
-   Attacker       Target       Target      Legacy Target
-       │
-       │
-       └───────────────────────┐
-                               ▼
-                         Android VM
-                       Mobile Target
+       ┌────────────┼────────────┬────────────┬─────────────┬────────────────────┐
+       │            │            │            │             │                    │               
+       ▼            ▼            ▼            ▼             ▼                    ▼
+   Kali Linux   Windows 11   Windows 10   Windows 7      Windows Server 2016   Android VM 
+   Attacker       Target       Target      Legacy Target   Server Target      Mobile Target
+       
 ```
 
 ### 📷 Lab Architecture
 
 > **Image Placeholder:**
-> `![Lab Architecture](images/lab-architecture.png)`
+> `![Lab Architecture](1-screenshot-title-image.png)`
 
 ---
 
@@ -114,20 +110,21 @@ The planned architecture consists of one host computer running multiple virtual 
 
 | 🧩 Component        | ⚙️ Configuration      |
 | ------------------- | --------------------- |
-| 🖥️ Host OS         | Windows 10            |
+| 🖥️ Host OS          | Windows 10            |
 | 🧠 Host RAM         | 8 GB                  |
-| ⚡ Processor         | Intel Core i7         |
+| ⚡ Processor        | Intel Core i7         |
 | 🧰 Hypervisor       | VirtualBox 7.2        |
 | 🌐 Virtual Network  | NAT Network           |
 | 📡 Network Address  | 10.0.0.0/24           |
 | 🚪 Default Gateway  | 10.0.0.1              |
 | 🌍 DNS              | 8.8.8.8               |
 | 📦 Network DHCP     | Enabled               |
-| 📶 IPv6             | Disabled              |
+| 📶 IPv6             | Optional              |
 | 🐉 Kali Linux       | Kali Linux 2026.2     |
 | 🪟 Windows Target 1 | Windows 11            |
 | 🪟 Windows Target 2 | Windows 10            |
 | 🪟 Windows Target 3 | Windows 7             |
+| 🪟 Windows Target 4 | Windows Server 2016   |
 | 🤖 Mobile Target    | Android               |
 | 📸 VM Snapshots     | Clean baseline per VM |
 
@@ -165,10 +162,11 @@ For example:
 
 ```text
 10.0.0.2   → Kali Linux
-10.0.0.3   → Windows 11
-10.0.0.4   → Windows 10
-10.0.0.5   → Windows 7
-10.0.0.6   → Android
+10.0.0.11   → Windows 11
+10.0.0.10   → Windows 10
+10.0.0.7   → Windows 7
+10.0.0.16   → Windows Server 2016
+10.0.0.9   → Android
 ```
 
 The actual addresses may differ if DHCP is enabled.
@@ -179,7 +177,7 @@ The actual addresses may differ if DHCP is enabled.
 
 ## Step 1 — Install 7-Zip
 
-7-Zip was installed where required to extract compressed virtual-machine packages such as `.7z` archives.
+7-Zip was installed where required to extract compressed virtual-machine packages such as `.7z` archives. However, sometimes you can simply use the extract feature in Windows itself
 
 ### Tool
 
@@ -189,10 +187,6 @@ Official source:
 
 https://7-zip.org/download.html
 
-### 📷 Screenshot
-
-> **Image Placeholder:**
-> `![7-Zip Installation](images/01-7zip-installation.png)`
 
 ---
 
@@ -211,7 +205,7 @@ https://virtualbox.org/wiki/Downloads
 ### 📷 Screenshot
 
 > **Image Placeholder:**
-> `![VirtualBox Installation](images/02-virtualbox-installation.png)`
+> `![VirtualBox Installation](11-virtualbox.png)`
 
 ---
 
@@ -243,21 +237,21 @@ A dedicated NAT Network was created in VirtualBox for the cybersecurity laborato
 Network Name:   NatNetwork
 IPv4 Prefix:    10.0.0.0/24
 DHCP:           Enabled
-IPv6:           Disabled
 ```
 
 ### Why NAT Network?
 
 A NAT Network allows multiple virtual machines connected to the same virtual network to communicate with one another while providing NAT-based outbound connectivity.
 
-This makes it suitable for a multi-machine cybersecurity laboratory.
+This makes it suitable for a multi-machine cybersecurity laboratory. This helps students and professionals to conduct security testing among various devices and applications.
 
 The virtual machines can therefore operate within the same controlled environment without placing the testing network directly onto the physical LAN.
 
 ### 📷 Screenshot
 
 > **Image Placeholder:**
-> `![NAT Network Configuration](images/04-nat-network.png)`
+> `![NAT Network Configuration](12-networknav.png)`
+> `![NAT Network Configuration](13-natnetwork.png)`
 
 ---
 
@@ -268,6 +262,8 @@ Kali Linux was installed/imported into VirtualBox.
 Official source:
 
 https://kali.org/get-kali
+
+Make sure to select the Kali Virtual Box installation option.
 
 The Kali VM was connected to:
 
@@ -282,19 +278,43 @@ Network:     NatNetwork
 ```text
 Operating System: Kali Linux
 RAM:              2048 MB
+Processors:       2
 Network:          NatNetwork
-Role:             Security Testing / Attacker VM
 ```
 
 ### 📷 Screenshots
 
 > **Image Placeholder:**
-> `![Kali VM Configuration](images/05-kali-vm-settings.png)`
+> `![Kali VM Configuration](14-addVM.png)`
 
 > **Image Placeholder:**
-> `![Kali Network Adapter](images/06-kali-network-adapter.png)`
-
+> `![Kali Network Adapter](15-networkset.png)`
+>
+> This is how Kali Linux looks
+> **Image Placeholder:**
+> `![Kali](16-kali.png)`
 ---
+# Step 5.1 — Configure Kali Linux Network
+Right click on the Kali taskbar and open connections and look for the 'Wired Connection 1'. It can differ depending on the VM.
+Configure using the below details for the network.
+> **Image Placeholder:**
+> `![IP Set](17-ipaddr.png)`
+
+Confirm the change of the IP address using the below command.
+# Restart `Wired connection 1`
+
+Run the following commands separately:
+
+```bash
+sudo nmcli connection down "Wired connection 1"
+sudo nmcli connection up "Wired connection 1"
+
+ifconfig
+```
+> **Image Placeholder:**
+> `![IP confirm](21-ipset.png)`
+
+Now the IP address should be the manually configured IP address.
 
 # Step 6 — Configure Windows 11 VM
 
@@ -314,7 +334,6 @@ The installation and configuration process included checking:
 
 * Virtual hardware compatibility
 * Network connectivity
-* Guest additions/tools where applicable
 * Display configuration
 * Storage
 * VM resource allocation
