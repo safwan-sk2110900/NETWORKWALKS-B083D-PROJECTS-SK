@@ -3,6 +3,37 @@
 Building an isolated virtual environment for cybersecurity, penetration-testing, and security experimentation.
 
 ---
+## ⚠️ LIABILITY DISCLAIMER
+
+> **Read before proceeding**
+
+These materials are for **education and research purposes only**. Although this course includes practicals and labs, they are meant for *learning purposes only*. The aim is to show you how attacks work in real-world systems so you can defend systems better.
+
+**Do not use anything from here to break the law.**
+
+I am not responsible for what you do with this knowledge. Every action you take is your own responsibility.
+
+> 🚨 Misuse can lead to criminal charges, heavy fines, loss of your job, and a permanent record. In most countries, unauthorized access is a crime **even when nothing is damaged**.
+
+---
+
+## ✅ Hacking is only legal when:
+
+- 🖥️ You test a device or network that **you own**, or your **lab environment**
+- 📝 You have **written and documented permission** from the owner
+- 🤝 You are working as a **security professional** under a **signed agreement** with an agreed scope
+
+---
+
+### 🔒 Everything outside these cases is **illegal**.
+
+---
+
+**Environment:**  
+`( ) Virtual lab   ( ) Your own devices`
+
+☑️ *By continuing, you confirm that you have read this disclaimer and accept full responsibility for your actions.*
+
 
 ## 📌 Project Overview
 
@@ -351,37 +382,73 @@ Remember to set the network also for the Windows VM as follows.
 ![Windows 11 Network](26-netsetwin.png)
 
 Finally, start the VM and boot into the Windows installation tool and continue on with the installation similar to a normal Windows installation.
+Make sure to select "Windows 11 Professional" as preferred edition.
 
 ![Windows 11 Install](28-win11install.png)
 
 # Step 6.1 — Configure Windows 11 Network
+It is important to configure the network connection of Window 11 VM manually to be part of the isolated NatNetwork. 
+Once the VM is ready, open start menu and search for "network" and open "View Network Connections".
+Select the Ethernet connection, select properties, select IPv4, and click properties. 
+
+Follow the steps below.
+![Windows 11 Network](37-networkConnwin11.png)
+![Windows 11 Network](38-check_properties.png)
+![Windows 11 Network](39-protocolselect.png)
+
+Set the following configuration
+![Windows 11 Network](40-Win11Ipconfig.png)
+
+Finally, confirm the connection by opening CMD and checking the connection as below.
+
+![Windows 11 Network](41-verifyconnWin11.png)
 
 ---
 
 # Step 7 — Configure Windows 10 VM
 
 Windows 10 was configured as an additional Windows target.
+Windows 10 can be installed the same way as the steps followed for Windows 10. 
+
+Follow the below steps to download the ISO officially from Microsoft.
+![Windows 10 Install](6-Windows10.png)
+![Windows 10 Install](7-Windows10.png)
+![Windows 10 Install](8-Windows10.png)
+![Windows 10 Install](9-windows10iso.png)
+
+Virtual Box setup for Windows 10 can be followed similarly to Windows 11 as below.
+![Windows 10 VBox](29-win10vbox.png)
+![Windows 10 VBox](30-win10natset.png)
+![Windows 10 VBox](31-win10setup.png)
+
+Follow the installation tool once inside the VM, and install Windows cleanly similar to normal Windows installation.
+Make sure to select "Windows 10 Professional" as preferred edition.
+![Windows 10 VBox](32-win10desktop.png)
 
 ### Example
 
 ```text
 Operating System: Windows 10
 Network:          NatNetwork
-Role:             Target VM
 ```
 
 The VM was configured and connected to the same isolated virtual network.
 
-### 📷 Screenshots
+# Step 7.1 — Configure Windows 10 Network
+It is important to configure the network connection of Window 10 VM manually to be part of the isolated NatNetwork. 
+Once the VM is ready, open start menu and search for "Control Panel" and open "Network and Internet" in Control Panel then move to Network and Sharing Center.
+Select the Ethernet connection, select properties, select IPv4, and click properties. 
 
-> **Image Placeholder:**
-> `![Windows 10 VM](images/09-windows10-vm.png)`
+![Windows 10 Network](46-win10netset.png)
 
-> **Image Placeholder:**
-> `![Windows 10 Network Configuration](images/10-windows10-network.png)`
+Set the following configuration
+![Windows 10 Network](47-win10config.png)
+
+Finally, confirm the connection by opening CMD and checking the connection as below.
+
+![Windows 10 Network](48-networkcheckwin10.png)
 
 ---
-
 # Step 8 — Configure Windows 7 VM
 
 Windows 7 was configured as a legacy Windows target.
@@ -398,23 +465,67 @@ Areas checked included:
 * Network connectivity
 * Snapshot/recovery state
 
+Similar to the Setup of Windows 11 and Windows 10, use Windows 7 ISO file to setup Windows 7 in Virtual Box as a Legacy VM.
+Make sure to use default settings and disable unattended installation. Make sure to select "Windows 7 Ultimate" as preferred edition.
+
+![Windows 7 Setup](35-win7set.png)
+
 ### ⚠️ Security Consideration
 
 Windows 7 is an outdated operating system and should **not** be exposed directly to untrusted networks.
 
 It is being used here strictly as an isolated laboratory target.
 
-### 📷 Screenshots
+# Step 8.1 — Configure Windows 7 Network
 
-> **Image Placeholder:**
-> `![Windows 7 VM](images/11-windows7-vm.png)`
+Similar to Windows 10, open start menu and search "network", Open Network and Sharing Center and select Local Area Connection in Connections and set the manual IP configurations as follow.
 
-> **Image Placeholder:**
-> `![Windows 7 Network Configuration](images/12-windows7-network.png)`
+![Windows 7 Network](49-win7net.png)
+![Windows 7 Network](50-lanconnwin7.png)
+![Windows 7 Network](51-netconfigwin7.png)
+
+Use the following configuration for IP address.
+![Windows 7 Network](52-netcheckwin7.png)
 
 ---
+# Step 9 — Configure Windows Server 2016 VM
 
-# Step 9 — Configure Android VM
+A server VM was added to the lab to provide a legacy server target.
+
+Similar to Windows 10, acquire the ISO file for Windows Server 2016 and use the ISO file to setup the Server VM on Virtual Box as follows.
+
+![Windows Server 2016](33-server2016.png)
+
+After starting the VM, follow the installation steps in the VM. Make sure to select "Standard Evaluation (Desktop Experience)" as preferred edition.
+
+The below shows the Server Manager in Server 2016.
+
+![Windows Server 2016](34-servermanager.png)
+
+
+### Example
+
+```text
+Operating System: Windows Server 2016
+Network:          NatNetwork
+```
+
+The Server VM was configured and tested for:
+
+* Boot functionality
+* Network adapter functionality
+* IP address assignment
+* Connectivity to the laboratory network
+* Communication with other authorized laboratory systems
+
+
+---
+# Step 9.1 — Configure Windows Server 2016 Network
+Go to Step 7.1, and follow the exact same steps as Windows 10 because Windows Server 2016 is based on Windows 10. 
+Make sure to use the following configurations for IPv4.
+![Windows Server 2016 Network](54-servernetconfig.png)
+
+# Step 10 — Configure Android VM
 
 An Android virtual machine was added to the laboratory to provide a mobile operating-system target.
 
@@ -436,15 +547,9 @@ The Android VM was configured and tested for:
 * Connectivity to the laboratory network
 * Communication with other authorized laboratory systems
 
-### 📷 Screenshots
-
-> **Image Placeholder:**
-> `![Android VM](images/13-android-vm.png)`
-
-> **Image Placeholder:**
-> `![Android Network Configuration](images/14-android-network.png)`
 
 ---
+# Step 10.1 — Configure Android VM Network
 
 # 🖥️ Virtual Machine Network Configuration
 
@@ -462,15 +567,16 @@ The resulting environment allows the virtual machines to communicate through the
 
 ### Example Addressing
 
-| VM         | Example IP | Role             |
-| ---------- | ---------- | ---------------- |
-| Kali Linux | 10.0.0.2   | Security Testing |
-| Windows 11 | 10.0.0.3   | Target           |
-| Windows 10 | 10.0.0.4   | Target           |
-| Windows 7  | 10.0.0.5   | Legacy Target    |
-| Android    | 10.0.0.6   | Mobile Target    |
+| VM                   | Example IP  | Role             |
+| -------------------- | ----------- | ---------------- |
+| Kali Linux           | 10.0.0.2    | Security Testing |
+| Windows 11           | 10.0.0.11   | Target           |
+| Windows 10           | 10.0.0.10   | Target           |
+| Windows 7            | 10.0.0.7    | Legacy Target    |
+| Windows Server 2016  | 10.0.0.16   | Legacy Target    |
+| Android              | 10.0.0.9    | Mobile Target    |
 
-> **Note:** These addresses are examples. Actual addresses may be dynamically assigned by the NAT Network's DHCP service.
+> **Note:** These addresses are manually configured instead of using a DHCP Assignment. DHCP can be used, but it will not be convenient for a Home Lab.
 
 ---
 
@@ -562,10 +668,7 @@ nmap -sn 10.0.0.0/24
 
 This can be used to identify active hosts within the authorized laboratory network.
 
-### 📷 Screenshot
 
-> **Image Placeholder:**
-> `![Network Discovery](images/16-network-discovery.png)`
 
 ---
 
@@ -742,46 +845,18 @@ Windows installation media/images should be obtained through Microsoft's officia
 
 Android images should be obtained through the appropriate official or legitimate project/distribution sources.
 
----
-
-# 📁 Repository Structure
-
-```text
-cybersecurity-virtual-lab/
-│
-├── README.md
-│
-└── images/
-    ├── 01-7zip-installation.png
-    ├── 02-virtualbox-installation.png
-    ├── 03-hardware-virtualization.png
-    ├── 04-nat-network.png
-    ├── 05-kali-vm-settings.png
-    ├── 06-kali-network-adapter.png
-    ├── 07-windows11-vm.png
-    ├── 08-windows11-network.png
-    ├── 09-windows10-vm.png
-    ├── 10-windows10-network.png
-    ├── 11-windows7-vm.png
-    ├── 12-windows7-network.png
-    ├── 13-android-vm.png
-    ├── 14-android-network.png
-    ├── 15-inter-vm-connectivity.png
-    ├── 16-network-discovery.png
-    └── 17-vm-snapshots.png
-```
 
 ---
 
 # 👤 Author
 
-**[Your Name]**
+**[Safwan Abdurahiman Kavil]**
 
 Cybersecurity Intern — Networkwalks
 
-LinkedIn: **[Your LinkedIn Profile]**
+LinkedIn: **[www.linkedin.com/in/safwan-abdurahiman-kavil-sak03]**
 
-GitHub: **[Your GitHub Profile]**
+GitHub: **[https://github.com/safwan-sk2110900]**
 
 ---
 
@@ -797,6 +872,8 @@ GitHub: **[Your GitHub Profile]**
 | Network     | 10.0.0.0/24 NAT Network                            |
 | Security VM | Kali Linux                                         |
 | Target VMs  | Windows 11, Windows 10, Windows 7, Android         |
+| Server VMs  | Windows Server 2016                                |
+
 
 ---
 
