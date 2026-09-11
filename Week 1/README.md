@@ -101,8 +101,7 @@ The planned architecture consists of one host computer running multiple virtual 
 
 ### 📷 Lab Architecture
 
-> **Image Placeholder:**
-> `![Lab Architecture](1-screenshot-title-image.png)`
+ ![Lab Architecture](1-screenshot-title-image.png)
 
 ---
 
@@ -202,10 +201,8 @@ Official source:
 
 https://virtualbox.org/wiki/Downloads
 
-### 📷 Screenshot
 
-> **Image Placeholder:**
-> `![VirtualBox Installation](11-virtualbox.png)`
+![VirtualBox Installation](11-virtualbox.png)
 
 ---
 
@@ -220,10 +217,7 @@ Depending on the processor and system firmware, this may appear as:
 * SVM
 * Hardware Virtualization
 
-### 📷 Screenshot
-
-> **Image Placeholder:**
-> `![Hardware Virtualization](images/03-hardware-virtualization.png)`
+![Hardware Virtualization](images/03-hardware-virtualization.png)
 
 ---
 
@@ -247,11 +241,9 @@ This makes it suitable for a multi-machine cybersecurity laboratory. This helps 
 
 The virtual machines can therefore operate within the same controlled environment without placing the testing network directly onto the physical LAN.
 
-### 📷 Screenshot
+![NAT Network Configuration](12-networknav.png)
 
-> **Image Placeholder:**
-> `![NAT Network Configuration](12-networknav.png)`
-> `![NAT Network Configuration](13-natnetwork.png)`
+![NAT Network Configuration](13-natnetwork.png)
 
 ---
 
@@ -282,23 +274,21 @@ Processors:       2
 Network:          NatNetwork
 ```
 
-### 📷 Screenshots
 
-> **Image Placeholder:**
-> `![Kali VM Configuration](14-addVM.png)`
+![Kali VM Configuration](14-addVM.png)
 
-> **Image Placeholder:**
-> `![Kali Network Adapter](15-networkset.png)`
->
-> This is how Kali Linux looks
-> **Image Placeholder:**
-> `![Kali](16-kali.png)`
+![Kali Network Adapter](15-networkset.png)
+
+This is how Kali Linux looks
+
+![Kali](16-kali.png)
+
 ---
 # Step 5.1 — Configure Kali Linux Network
 Right click on the Kali taskbar and open connections and look for the 'Wired Connection 1'. It can differ depending on the VM.
 Configure using the below details for the network.
-> **Image Placeholder:**
-> `![IP Set](17-ipaddr.png)`
+
+![IP Set](17-ipaddr.png)
 
 Confirm the change of the IP address using the below command.
 # Restart `Wired connection 1`
@@ -311,8 +301,8 @@ sudo nmcli connection up "Wired connection 1"
 
 ifconfig
 ```
-> **Image Placeholder:**
-> `![IP confirm](21-ipset.png)`
+
+![IP confirm](21-ipset.png)
 
 Now the IP address should be the manually configured IP address.
 
