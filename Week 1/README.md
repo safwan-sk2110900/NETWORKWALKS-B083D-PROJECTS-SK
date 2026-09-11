@@ -393,7 +393,7 @@ Select the Ethernet connection, select properties, select IPv4, and click proper
 
 Follow the steps below.
 ![Windows 11 Network](37-networkConnwin11.png)
-![Windows 11 Network](38-check properties.png)
+![Windows 11 Network](38-check_properties.png)
 ![Windows 11 Network](39-protocolselect.png)
 
 Set the following configuration
