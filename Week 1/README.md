@@ -306,6 +306,10 @@ ifconfig
 
 Now the IP address should be the manually configured IP address.
 
+Finally set up a snapshot of this clean VM as a restore point if things go wrong. 
+
+![Snapshot](22-snapshot.png)
+
 # Step 6 — Configure Windows 11 VM
 
 Windows 11 was installed/configured as a modern Windows target system.
@@ -330,13 +334,27 @@ The installation and configuration process included checking:
 * Network adapter configuration
 * Snapshot creation
 
-### 📷 Screenshots
+First, download the proper Windows 11 ISO file from Microsoft.
+![Windows 11](5-windows.png)
 
-> **Image Placeholder:**
-> `![Windows 11 VM](images/07-windows11-vm.png)`
+Once the ISO is downloaded, set the VM for Windows 11 by the following.
+![Windows 11 VM](23-vmset-win11.png)
 
-> **Image Placeholder:**
-> `![Windows 11 Network Configuration](images/08-windows11-network.png)`
+Remember to select the downloaded Windows 11 ISO image and disable unattended installation
+
+Set the hardware configurations as below.
+
+![Windows 11 Hardware 1](24-hardware1.png)
+![Windows 11 Hardware 2](25-hardware2.png)
+
+Remember to set the network also for the Windows VM as follows.
+![Windows 11 Network](26-netsetwin.png)
+
+Finally, start the VM and boot into the Windows installation tool and continue on with the installation similar to a normal Windows installation.
+
+![Windows 11 Install](28-win11install.png)
+
+# Step 6.1 — Configure Windows 11 Network
 
 ---
 
