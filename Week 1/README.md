@@ -34,6 +34,50 @@ I am not responsible for what you do with this knowledge. Every action you take 
 
 ☑️ *By continuing, you confirm that you have read this disclaimer and accept full responsibility for your actions.*
 
+## 📑 Table of Contents
+
+- [⚠️ Liability Disclaimer](#-liability-disclaimer)
+- [✅ Hacking Is Only Legal When](#-hacking-is-only-legal-when)
+- [📌 Project Overview](#-project-overview)
+- [🎯 Objectives](#-objectives)
+- [🛡️ Purpose of the Lab](#-purpose-of-the-lab)
+- [🏗️ Lab Architecture](#-lab-architecture)
+- [⚙️ Lab Configuration](#-lab-configuration)
+- [🌐 Why a /24 Network?](#-why-a-24-network)
+- [🪜 Lab Setup Procedure](#-lab-setup-procedure)
+  - [Step 1 — Install 7-Zip](#step-1--install-7-zip)
+  - [Step 2 — Install VirtualBox](#step-2--install-virtualbox)
+  - [Step 3 — Enable Hardware Virtualization](#step-3--enable-hardware-virtualization)
+  - [Step 4 — Create the NAT Network](#step-4--create-the-nat-network)
+  - [Step 5 — Configure Kali Linux](#step-5--configure-kali-linux)
+  - [Step 5.1 — Configure Kali Linux Network](#step-51--configure-kali-linux-network)
+  - [Step 6 — Configure Windows 11 VM](#step-6--configure-windows-11-vm)
+  - [Step 6.1 — Configure Windows 11 Network](#step-61--configure-windows-11-network)
+  - [Step 7 — Configure Windows 10 VM](#step-7--configure-windows-10-vm)
+  - [Step 7.1 — Configure Windows 10 Network](#step-71--configure-windows-10-network)
+  - [Step 8 — Configure Windows 7 VM](#step-8--configure-windows-7-vm)
+  - [Step 8.1 — Configure Windows 7 Network](#step-81--configure-windows-7-network)
+  - [Step 9 — Configure Windows Server 2016 VM](#step-9--configure-windows-server-2016-vm)
+  - [Step 9.1 — Configure Windows Server 2016 Network](#step-91--configure-windows-server-2016-network)
+  - [Step 10 — Configure Android VM](#step-10--configure-android-vm)
+  - [Step 10.1 — Configure Android VM Network](#step-101--configure-android-vm-network)
+- [🖥️ Virtual Machine Network Configuration](#-virtual-machine-network-configuration)
+- [🔎 Lab Verification](#-lab-verification)
+- [🔍 Inter-VM Connectivity Testing](#-inter-vm-connectivity-testing)
+- [🔎 Network Discovery](#-network-discovery)
+- [📸 VM Snapshots](#-vm-snapshots)
+- [🐞 Problems Encountered & Solutions](#-problems-encountered--solutions)
+  - [Problem 1 — Hardware Virtualization Disabled](#problem-1--hardware-virtualization-disabled)
+  - [Problem 2 — Network Connectivity After Static Configuration](#problem-2--network-connectivity-after-static-configuration)
+  - [Problem 3 — Windows 7 Compatibility](#problem-3--windows-7-compatibility)
+  - [Problem 4 — Android Virtualization Compatibility](#problem-4--android-virtualization-compatibility)
+- [💡 What I Learned](#-what-i-learned)
+- [🔐 Security & Ethical Use](#-security--ethical-use)
+- [🔗 Tools & Resources](#-tools--resources)
+- [👤 Author](#-author)
+- [📌 Project Information](#-project-information)
+- [📚 Week 01 Summary](#-week-01-summary)
+
 
 ## 📌 Project Overview
 
