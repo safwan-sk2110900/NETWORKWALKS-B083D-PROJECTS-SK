@@ -132,7 +132,7 @@ The planned architecture consists of one host computer running multiple virtual 
 
 ### 📷 Lab Architecture
 
- ![Lab Architecture](1-screenshot-title-image.png)
+ ![Lab Architecture](images/1-screenshot-title-image.png)
 
 ---
 
@@ -233,7 +233,7 @@ Official source:
 https://virtualbox.org/wiki/Downloads
 
 
-![VirtualBox Installation](11-virtualbox.png)
+![VirtualBox Installation](images/11-virtualbox.png)
 
 ---
 
@@ -248,7 +248,7 @@ Depending on the processor and system firmware, this may appear as:
 * SVM
 * Hardware Virtualization
 
-![Hardware Virtualization](images/03-hardware-virtualization.png)
+![Hardware Virtualization](images/maxresdefault.jpg)
 
 ---
 
@@ -272,9 +272,9 @@ This makes it suitable for a multi-machine cybersecurity laboratory. This helps 
 
 The virtual machines can therefore operate within the same controlled environment without placing the testing network directly onto the physical LAN.
 
-![NAT Network Configuration](12-networknav.png)
+![NAT Network Configuration](images/12-networknav.png)
 
-![NAT Network Configuration](13-natnetwork.png)
+![NAT Network Configuration](images/13-natnetwork.png)
 
 ---
 
@@ -296,7 +296,7 @@ Attached to: NAT Network
 Network:     NatNetwork
 ```
 
-### Example Configuration
+### Configuration
 
 ```text
 Operating System: Kali Linux
@@ -306,20 +306,20 @@ Network:          NatNetwork
 ```
 
 
-![Kali VM Configuration](14-addVM.png)
+![Kali VM Configuration](images/14-addVM.png)
 
-![Kali Network Adapter](15-networkset.png)
+![Kali Network Adapter](images/15-networkset.png)
 
 This is how Kali Linux looks
 
-![Kali](16-kali.png)
+![Kali](images/16-kali.png)
 
 ---
 # Step 5.1 — Configure Kali Linux Network
 Right click on the Kali taskbar and open connections and look for the 'Wired Connection 1'. It can differ depending on the VM.
 Configure using the below details for the network.
 
-![IP Set](17-ipaddr.png)
+![IP Set](images/17-ipaddr.png)
 
 Confirm the change of the IP address using the below command.
 # Restart `Wired connection 1`
@@ -333,13 +333,13 @@ sudo nmcli connection up "Wired connection 1"
 ifconfig
 ```
 
-![IP confirm](21-ipset.png)
+![IP confirm](images/21-ipset.png)
 
 Now the IP address should be the manually configured IP address.
 
 Finally set up a snapshot of this clean VM as a restore point if things go wrong. 
 
-![Snapshot](22-snapshot.png)
+![Snapshot](images/22-snapshot.png)
 
 # Step 6 — Configure Windows 11 VM
 
@@ -347,13 +347,6 @@ Windows 11 was installed/configured as a modern Windows target system.
 
 The VM was connected to the same laboratory NAT Network.
 
-### Example
-
-```text
-Operating System: Windows 11
-Network:          NatNetwork
-Role:             Target VM
-```
 
 The installation and configuration process included checking:
 
@@ -366,25 +359,25 @@ The installation and configuration process included checking:
 * Snapshot creation
 
 First, download the proper Windows 11 ISO file from Microsoft.
-![Windows 11](5-windows.png)
+![Windows 11](images/5-windows.png)
 
 Once the ISO is downloaded, set the VM for Windows 11 by the following.
-![Windows 11 VM](23-vmset-win11.png)
+![Windows 11 VM](images/23-vmset-win11.png)
 
 Remember to select the downloaded Windows 11 ISO image and disable unattended installation
 
 Set the hardware configurations as below.
 
-![Windows 11 Hardware 1](24-hardware1.png)
-![Windows 11 Hardware 2](25-hardware2.png)
+![Windows 11 Hardware 1](images/24-hardware1.png)
+![Windows 11 Hardware 2](images/25-hardware2.png)
 
 Remember to set the network also for the Windows VM as follows.
-![Windows 11 Network](26-netsetwin.png)
+![Windows 11 Network](images/26-netsetwin.png)
 
 Finally, start the VM and boot into the Windows installation tool and continue on with the installation similar to a normal Windows installation.
 Make sure to select "Windows 11 Professional" as preferred edition.
 
-![Windows 11 Install](28-win11install.png)
+![Windows 11 Install](images/28-win11install.png)
 
 # Step 6.1 — Configure Windows 11 Network
 It is important to configure the network connection of Window 11 VM manually to be part of the isolated NatNetwork. 
@@ -392,16 +385,16 @@ Once the VM is ready, open start menu and search for "network" and open "View Ne
 Select the Ethernet connection, select properties, select IPv4, and click properties. 
 
 Follow the steps below.
-![Windows 11 Network](37-networkConnwin11.png)
-![Windows 11 Network](38-check_properties.png)
-![Windows 11 Network](39-protocolselect.png)
+![Windows 11 Network](images/37-networkConnwin11.png)
+![Windows 11 Network](images/38-check_properties.png)
+![Windows 11 Network](images/39-protocolselect.png)
 
 Set the following configuration
-![Windows 11 Network](40-Win11Ipconfig.png)
+![Windows 11 Network](images/40-Win11Ipconfig.png)
 
 Finally, confirm the connection by opening CMD and checking the connection as below.
 
-![Windows 11 Network](41-verifyconnWin11.png)
+![Windows 11 Network](images/41-verifyconnWin11.png)
 
 ---
 
@@ -411,26 +404,21 @@ Windows 10 was configured as an additional Windows target.
 Windows 10 can be installed the same way as the steps followed for Windows 10. 
 
 Follow the below steps to download the ISO officially from Microsoft.
-![Windows 10 Install](6-Windows10.png)
-![Windows 10 Install](7-Windows10.png)
-![Windows 10 Install](8-Windows10.png)
-![Windows 10 Install](9-windows10iso.png)
+![Windows 10 Install](images/6-Windows10.png)
+![Windows 10 Install](images/7-Windows10.png)
+![Windows 10 Install](images/8-Windows10.png)
+![Windows 10 Install](images/9-windows10iso.png)
 
 Virtual Box setup for Windows 10 can be followed similarly to Windows 11 as below.
-![Windows 10 VBox](29-win10vbox.png)
-![Windows 10 VBox](30-win10natset.png)
-![Windows 10 VBox](31-win10setup.png)
+![Windows 10 VBox](images/29-win10vbox.png)
+![Windows 10 VBox](images/30-win10natset.png)
+![Windows 10 VBox](images/31-win10setup.png)
 
 Follow the installation tool once inside the VM, and install Windows cleanly similar to normal Windows installation.
 Make sure to select "Windows 10 Professional" as preferred edition.
-![Windows 10 VBox](32-win10desktop.png)
 
-### Example
+![Windows 10 VBox](images/32-win10desktop.png)
 
-```text
-Operating System: Windows 10
-Network:          NatNetwork
-```
 
 The VM was configured and connected to the same isolated virtual network.
 
@@ -439,14 +427,14 @@ It is important to configure the network connection of Window 10 VM manually to 
 Once the VM is ready, open start menu and search for "Control Panel" and open "Network and Internet" in Control Panel then move to Network and Sharing Center.
 Select the Ethernet connection, select properties, select IPv4, and click properties. 
 
-![Windows 10 Network](46-win10netset.png)
+![Windows 10 Network](images/46-win10netset.png)
 
 Set the following configuration
-![Windows 10 Network](47-win10config.png)
+![Windows 10 Network](images/47-win10config.png)
 
 Finally, confirm the connection by opening CMD and checking the connection as below.
 
-![Windows 10 Network](48-networkcheckwin10.png)
+![Windows 10 Network](images/48-networkcheckwin10.png)
 
 ---
 # Step 8 — Configure Windows 7 VM
@@ -468,7 +456,7 @@ Areas checked included:
 Similar to the Setup of Windows 11 and Windows 10, use Windows 7 ISO file to setup Windows 7 in Virtual Box as a Legacy VM.
 Make sure to use default settings and disable unattended installation. Make sure to select "Windows 7 Ultimate" as preferred edition.
 
-![Windows 7 Setup](35-win7set.png)
+![Windows 7 Setup](images/35-win7set.png)
 
 ### ⚠️ Security Consideration
 
@@ -480,12 +468,12 @@ It is being used here strictly as an isolated laboratory target.
 
 Similar to Windows 10, open start menu and search "network", Open Network and Sharing Center and select Local Area Connection in Connections and set the manual IP configurations as follow.
 
-![Windows 7 Network](49-win7net.png)
-![Windows 7 Network](50-lanconnwin7.png)
-![Windows 7 Network](51-netconfigwin7.png)
+![Windows 7 Network](images/49-win7net.png)
+![Windows 7 Network](images/50-lanconnwin7.png)
+![Windows 7 Network](images/51-netconfigwin7.png)
 
 Use the following configuration for IP address.
-![Windows 7 Network](52-netcheckwin7.png)
+![Windows 7 Network](images/52-netcheckwin7.png)
 
 ---
 # Step 9 — Configure Windows Server 2016 VM
@@ -494,21 +482,15 @@ A server VM was added to the lab to provide a legacy server target.
 
 Similar to Windows 10, acquire the ISO file for Windows Server 2016 and use the ISO file to setup the Server VM on Virtual Box as follows.
 
-![Windows Server 2016](33-server2016.png)
+![Windows Server 2016](images/33-server2016.png)
 
 After starting the VM, follow the installation steps in the VM. Make sure to select "Standard Evaluation (Desktop Experience)" as preferred edition.
 
 The below shows the Server Manager in Server 2016.
 
-![Windows Server 2016](34-servermanager.png)
+![Windows Server 2016](images/34-servermanager.png)
 
-
-### Example
-
-```text
-Operating System: Windows Server 2016
-Network:          NatNetwork
-```
+---
 
 The Server VM was configured and tested for:
 
@@ -523,20 +505,15 @@ The Server VM was configured and tested for:
 # Step 9.1 — Configure Windows Server 2016 Network
 Go to Step 7.1, and follow the exact same steps as Windows 10 because Windows Server 2016 is based on Windows 10. 
 Make sure to use the following configurations for IPv4.
-![Windows Server 2016 Network](54-servernetconfig.png)
+
+![Windows Server 2016 Network](images/54-servernetconfig.png)
 
 # Step 10 — Configure Android VM
 
 An Android virtual machine was added to the laboratory to provide a mobile operating-system target.
 
-The Android image was obtained from a legitimate/appropriate source and configured within the virtualization environment.
+The Android image was obtained from an appropriate source and configured within the virtualization environment.
 
-### Example
-
-```text
-Operating System: Android
-Network:          NatNetwork
-Role:             Mobile Target
 ```
 
 The Android VM was configured and tested for:
