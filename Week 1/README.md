@@ -688,10 +688,6 @@ ping <target-ip>
 
 The IP address of a target can also be identified using appropriate network-discovery tools within the laboratory.
 
-### 📷 Screenshot
-
-> **Image Placeholder:**
-> `![Inter-VM Connectivity](images/15-inter-vm-connectivity.png)`
 
 ---
 
@@ -727,10 +723,6 @@ Android - Clean Baseline
 
 Snapshots provide a recovery point before performing experiments that may modify or damage the VM.
 
-### 📷 Screenshot
-
-> **Image Placeholder:**
-> `![VM Snapshots](images/17-vm-snapshots.png)`
 
 ---
 
@@ -763,6 +755,8 @@ One workaround used during the laboratory was:
 
 ```bash
 sudo nmcli connection modify "Wired connection 1" ipv4.dad-timeout 0
+sudo nmcli connection down "Wired connection 1"
+sudo nmcli connection up "Wired connection 1"
 ```
 
 The connection was then restarted/rebooted and connectivity was tested again.
@@ -771,7 +765,23 @@ The connection was then restarted/rebooted and connectivity was tested again.
 
 ---
 
-## Problem 3 — Windows 7 Compatibility
+## Problem 3 — Windows Ping Block
+
+If you try to ping from any VM device to a Windows VM, you might encounter a ping failure and you might assume that something is wrong with the connection. If you follow the steps properly, then the ping failure is almost always due to Windows firewall rules.
+
+One workaround for this is to go to Windows Firewall and Advanced Configuration > Inbound section > File and Printer Sharing (Echo Request - ICMP v4) > Enable the rule. Once the rule is enabled, you can easily ping from Kali to Windows and Windows to Kali.
+
+![Ping Block](images/60-windowsfirewallforpingicmp.png)
+
+
+## Problem 4 — Windows Server 2016 Lock
+If you encounter a problem where you cannot unlock Windows Server 2016 VM by entering "CTRL + ALT + DEL" then follow the below procedure. Click "Insert CTRL + ALT + DEL" to unlock the VM.
+
+![Lock](images/53-problemserver.png)
+
+
+
+## Problem 5 — Windows 7 Compatibility
 
 Older operating systems may encounter compatibility issues with modern virtualization environments.
 
@@ -784,11 +794,17 @@ Potential areas requiring troubleshooting include:
 * Guest drivers
 * Hardware virtualization
 
+For instance, it is recommended to disable 3D acceleration in the Windows 7 VM settings because the Aero Glass effect leaves artifacts when you move the windows and tabs.
+
+![3D](images/36-win7problem.png)
+
+
 The configuration was adjusted as required to successfully boot and network the VM.
+
 
 ---
 
-## Problem 4 — Android Virtualization Compatibility
+## Problem 6 — Android Virtualization Compatibility
 
 Android virtualization can differ depending on the selected Android image and virtualization platform.
 
