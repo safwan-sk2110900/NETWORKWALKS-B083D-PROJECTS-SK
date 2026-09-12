@@ -558,7 +558,7 @@ An Android virtual machine was added to the laboratory to provide a mobile opera
 
 The Android image was obtained from an appropriate source and configured within the virtualization environment.
 
-```
+
 
 The Android VM was configured and tested for:
 
@@ -568,9 +568,27 @@ The Android VM was configured and tested for:
 * Connectivity to the laboratory network
 * Communication with other authorized laboratory systems
 
+For the Android VM setup, I recommend watching a proper tutorial from Youtube. You can access the tutorial here: https://youtu.be/Mk1cN915QMU?si=eoGfJNv0Nns98r2h
+
+
+![Android](images/56-android.png)
+
+
 
 ---
 # Step 10.1 — Configure Android VM Network
+
+Once the VM for Android is properly configured in Virtual Box, in the VM, go to settings > network and internet > connect to VirtWifi > click the connected Wifi > edit options > scroll down to IP settings.
+
+Set the IP setting to Static and configure the IP as below.
+
+![Android Net](images/57-dhcpchangeandroid.png)
+
+Test the connection by pinging from the Android device to Kali Attacker VM and vice versa as below.
+
+![Android Net](images/58-pingandroidtokali.png)
+
+![Android Net](images/59-pingkalitoandroid.png)
 
 # 🖥️ Virtual Machine Network Configuration
 
